@@ -23,7 +23,7 @@ export default {
     return [
       {
         slug: "originals",
-        title: "Originais Netflix",
+        title: "Originais Natflix",
         items: await basicFetch(
           `/discover/tv?with_network=213&${language}&${key}`
         ),
@@ -49,7 +49,7 @@ export default {
       },
       {
         slug: "horror",
-        title: "Teror",
+        title: "Terror",
         items: await basicFetch(
           `/discover/movie?with_genres=27${language}&${key}`
         ),
@@ -70,4 +70,19 @@ export default {
       },
     ];
   },
+  getMovieInfo: async (movieId, type) => {
+    let info ={};
+
+    if(movieId) {
+      switch(type) {
+        case "movie":
+          info = await basicFetch(`/movie/${movieId}?${language}&${key}`);
+        break;
+        case "tv":
+          info = await basicFetch(`/tv/${movieId}?${language}&${key}`);
+      }
+    }
+
+    return info;
+  }
 };  //refatorar jogando essa lista em outro arquivo
