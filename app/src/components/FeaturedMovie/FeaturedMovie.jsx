@@ -30,7 +30,10 @@ export default ({ item }) => {
               {item.number_of_seasons !== 1 ? "s" : ""}
             </div>
             <div className="featured--description">{item.overview}</div>
-            <div className="featured--buttons"></div>
+            <div className="featured--buttons">
+              <a href={`/watch/${item.id}`}>Assistir</a> {/*importar react icons e colocar o sinal de play antes de Assistir */}
+              <a href={`/list/add/${item.id}`}>+ Minha Lista</a>
+              </div>
             <div className="featured--genres">
               <strong>Gêneros:</strong> {genres.join(", ")}
             </div>
