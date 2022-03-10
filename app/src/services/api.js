@@ -10,30 +10,32 @@ const basicFetch = async (endpoint) => {
 
 export default {
   getHomeList: async () => {
+    const response = await Promise.all([
+      basicFetch(`/discover/tv?with_network=213&${language}&${key}`),
+      basicFetch(`/trending/all/week?${language}&${key}`),
+      basicFetch(`/movie/top_rated?${language}&${key}`),
+      basicFetch(`/discover/movie?with_genres=28${language}&${key}`)
+    ])
     return [
       {
         slug: "originals",
         title: "Originais Natflix",
-        items: await basicFetch(
-          `/discover/tv?with_network=213&${language}&${key}`
-        ),
+        items: response[0]
       },
       {
         slug: "trending",
         title: "Recomendados para Você",
-        items: await basicFetch(`/trending/all/week?${language}&${key}`),
+        items: response[1]
       },
       {
         slug: "topRated",
         title: "Em alta",
-        items: await basicFetch(`/movie/top_rated?${language}&${key}`),
+        items: response[2]
       },
       {
         slug: "action",
         title: "Ação",
-        items: await basicFetch(
-          `/discover/movie?with_genres=28${language}&${key}`
-        ),
+        items: response[3]
       },
     ];
   },
@@ -47,9 +49,10 @@ export default {
           break;
         case "tv":
           info = await basicFetch(`/tv/${movieId}?${language}&${key}`);
+          break;
       }
     }
 
     return info;
   },
-}; //refatorar jogando essa lista em outro arquivo
+}; 
