@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Grid } from "@material-ui/core";
 import "./app.css";
 import api from "./services/api";
 import MovieRow from "./components/MovieRow";
@@ -51,18 +52,20 @@ export default () => {
 
       {featuredData && <FeaturedMovie item={featuredData} />}
 
+      <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
       <section className="lists">
         {movieList.map((item, key) => (
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+      </Grid>
 
       <footer>
-        Feito com carinho por Natália Alpino.
+        <strong>Feito com carinho por Natália Alpino.</strong>
         <br />
-        Direitos de imagem para a Netflix.
+        <strong>Direitos de imagem para a Netflix.</strong>
         <br />
-        Dados pegos do site Themoviedb.org.
+        <strong>Dados pegos do site Themoviedb.org.</strong>
       </footer>
       {movieList.length <= 0 && (
         <div className="loading">

@@ -1,3 +1,6 @@
+import { Button } from "@material-ui/core";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import AddIcon from '@mui/icons-material/Add';
 import React from "react";
 import "./FeaturedMovie.css";
 
@@ -35,18 +38,19 @@ export default ({ item }) => {
               {item.number_of_seasons !== 1 ? "s" : ""}
             </div>
             <div className="featured--description">{description}</div>
-            <div className="featured--buttons">
+            <Button variant="text">
               <a href={`/watch/${item.id}`} className="featured--watchButton">
-                Assistir
+                <PlayArrowIcon /> Assistir
               </a>{" "}
               {/*importar react icons e colocar o sinal de play antes de Assistir */}
               <a
                 href={`/list/add/${item.id}`}
                 className="featured--myListButton"
               >
-                + Minha Lista
+                <AddIcon/> Minha Lista
               </a>
-            </div>
+            </Button>
+
             <div className="featured--genres">
               <strong>Gêneros:</strong> {genres.join(", ")}
             </div>
