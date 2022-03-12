@@ -9,7 +9,7 @@ const basicFetch = async (endpoint) => {
 };
 
 export default {
-  getHomeList: async () => { {/*implementei a promisse.all para melhorar a performance da aplicação, já que com ela eu "forço" uma mult tred*/}
+  getHomeList: async () => { 
     const response = await Promise.all([
       basicFetch(`/discover/tv?with_network=213&${language}&${key}`),
       basicFetch(`/trending/all/week?${language}&${key}`),

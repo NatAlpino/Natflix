@@ -52,29 +52,35 @@ export default () => {
 
       {featuredData && <FeaturedMovie item={featuredData} />}
 
-      <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
-      <section className="lists">
-        {movieList.map((item, key) => (
-          <MovieRow key={key} title={item.title} items={item.items} />
-        ))}
-      </section>
-      </Grid>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={1}
+      >
+        <section className="lists">
+          {movieList.map((item, key) => (
+            <MovieRow key={key} title={item.title} items={item.items} />
+          ))}
+        </section>
 
-      <footer>
-        <strong>Feito com carinho por Natália Alpino.</strong>
-        <br />
-        <strong>Direitos de imagem para a Netflix.</strong>
-        <br />
-        <strong>Dados pegos do site Themoviedb.org.</strong>
-      </footer>
-      {movieList.length <= 0 && (
-        <div className="loading">
-          <img
-            src="https://pa1.narvii.com/7724/02d6be6c9b9ca850006adc3fa77d9e4088c9c959r1-2000-1000_hq.gif"
-            alt="Carregando"
-          />
-        </div>
-      )}
+        <footer>
+          <strong>Feito com carinho por Natália Alpino.</strong>
+          <br />
+          <strong>Direitos de imagem para a Netflix.</strong>
+          <br />
+          <strong>Dados pegos do site Themoviedb.org.</strong>
+        </footer>
+        {movieList.length <= 0 && (
+          <div className="loading">
+            <img
+              src="https://pa1.narvii.com/7724/02d6be6c9b9ca850006adc3fa77d9e4088c9c959r1-2000-1000_hq.gif"
+              alt="Carregando"
+            />
+          </div>
+        )}
+      </Grid>
     </div>
   );
 };
