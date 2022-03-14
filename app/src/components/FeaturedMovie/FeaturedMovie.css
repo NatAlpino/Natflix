@@ -48,38 +48,6 @@
   max-width: 40%;
 }
 
-.featured--buttons {
-  margin-top: 15px;
-}
-
-.featured--watchButton,
-.featured--myListButton {
-  display: inline-block;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-right: 10px;
-  opacity: 1;
-  transition: all ease 0.2s;
-}
-
-.featured--watchButton:hover,
-.featured--myListButton:hover {
-  opacity: 0.7;
-}
-
-.featured--watchButton {
-  background-color: #fff;
-  color: #000;
-}
-
-.featured--myListButton {
-  background-color: #333;
-  color: #fff;
-}
-
 .featured--genres {
   margin-top: 15px;
   margin-top: 15px;
