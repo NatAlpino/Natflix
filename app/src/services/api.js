@@ -1,20 +1,15 @@
+import  makeRequest from './client'
 const key = "api_key=a6ecff937aaa6a771f25f2908bba5f46";
 const base = "https://api.themoviedb.org/3";
 const language = "language=pt-BR";
 
-const basicFetch = async (endpoint) => {
-  const req = await fetch(`${base}${endpoint}`);
-  const json = await req.json();
-  return json;
-};
 
-export default {
-  getHomeList: async () => { 
+async function getHomeList () {
     const response = await Promise.all([
-      basicFetch(`/discover/tv?with_network=213&${language}&${key}`),
-      basicFetch(`/trending/all/week?${language}&${key}`),
-      basicFetch(`/movie/top_rated?${language}&${key}`),
-      basicFetch(`/discover/movie?with_genres=28${language}&${key}`)
+      makeRequest('axios', `${base}/discover/tv?with_network=213&${language}&${key}`, 'GET'),
+      makeRequest('fetch', `${base}/trending/all/week?${language}&${key}`, 'GET'),
+      makeRequest('axios', `${base}/movie/top_rated?${language}&${key}`, 'GET'),
+      makeRequest('fetch', `${base}/discover/movie?with_genres=28${language}&${key}`, 'GET')
     ])
     return [
       {
@@ -38,21 +33,22 @@ export default {
         items: response[3]
       },
     ];
-  },
-  getMovieInfo: async (movieId, type) => {
-    let info = {};
+}
 
-    if (movieId) {
-      switch (type) {
-        case "movie":
-          info = await basicFetch(`/movie/${movieId}?${language}&${key}`);
-          break;
-        case "tv":
-          info = await basicFetch(`/tv/${movieId}?${language}&${key}`);
-          break;
-      }
+async function getMovieInfo(movieId, type) {
+  if (movieId) {
+    switch (type) {
+      case "movie":
+        return makeRequest('axios', `${base}/movie/${movieId}?${language}&${key}`, 'GET');
+      case "tv":
+        return makeRequest('axios', `${base}/tv/${movieId}?${language}&${key}`, 'GET');
+      default: 
+        throw new Error('Tipo de filme inválido!')
     }
+  }
+}
 
-    return info;
-  },
-}; 
+export default {
+  getMovieInfo, 
+  getHomeList
+}
