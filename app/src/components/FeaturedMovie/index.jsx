@@ -5,7 +5,6 @@ import "./FeaturedMovie.css";
 import { StyledButton } from "../StyledComponents/exports";
 
 export default ({ item }) => {
-  console.log(item);
 
   let firstDate = new Date(item.first_air_date);
   let genres = [];

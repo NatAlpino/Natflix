@@ -40,13 +40,13 @@ export default ({ title, items }) => {
             width: items.results.length * 150,
           }}
         >
-          {items.results.length > 0 &&
+          {items.results.length &&
             items.results.map((item, key) => (
-              <div key={key} className="movieRow--item">
+              <div key={key} className="movieRow--item" onClick={() => alert(JSON.stringify(item.id))}>
                 <img
                   src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
-                  alt={item.originals_title}
-                />
+                  alt={item.originals_title} 
+                  />
               </div>
             ))}
         </div>
@@ -54,3 +54,4 @@ export default ({ title, items }) => {
     </div>
   );
 };
+
