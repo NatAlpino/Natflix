@@ -38,14 +38,13 @@ export default ({ item }) => {
               {item.number_of_seasons !== 1 ? "s" : ""}
             </div>
             <div className="featured--description">{description}</div>
-            <StyledButton variant="text">
-              <a href={`/watch/${item.id}`} className="featured--watchButton">
+            <StyledButton>
+              <a className="featured--watchButton">
                 <PlayArrowIcon /> Assistir
               </a>{" "}
               </StyledButton>
-              <StyledButton variant="text">
+              <StyledButton>
               <a
-                href={`/list/add/${item.id}`}
                 className="featured--myListButton"
               >
                 <AddIcon/> Minha Lista

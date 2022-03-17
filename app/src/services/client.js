@@ -1,13 +1,8 @@
 import axios from 'axios'
-/**
- * 
- * @param {string} method - Aceita um verbo http (GET, PUT, POST, DELETE, PATCH) 
- * @param {string} url - URL a ser chamada
- * @returns {Promise} - Response
- */
+
 function fetchRequest(method, url) {
     return fetch(url, {
-        method: method //GET, PUT, POST, DELETE
+        method: method 
     }).then(response => 
         response.json())
 }
